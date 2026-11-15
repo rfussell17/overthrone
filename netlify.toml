@@ -5,3 +5,7 @@
 
 [build.environment]
   NODE_VERSION = "22"
+
+# Google Analytics runs on the live site only. Deploy previews and branch deploys do not get this variable.
+[context.production.environment]
+  NEXT_PUBLIC_GA_ID = "G-EVE8XVE51D"

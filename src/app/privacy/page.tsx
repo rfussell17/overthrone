@@ -3,8 +3,8 @@ import { site } from '@/data/site'
 import type { Metadata } from 'next'
 
 /*
- * DRAFT privacy policy. It describes what the site actually does (inquiry form through Netlify, analytics and a
- * Meta pixel that are planned but not yet installed). It has NOT been reviewed by a lawyer.
+ * DRAFT privacy policy. It describes what the site actually does (inquiry form through Netlify, Google Analytics, and a
+ * Meta pixel that is planned but not yet installed). It has NOT been reviewed by a lawyer.
  * TODO before launch: have Overthrone review it, and update the "Analytics and advertising" section to match the
  * tools that are really installed.
  */
@@ -46,9 +46,9 @@ export default function PrivacyPage() {
 
       <h2>Analytics and advertising</h2>
       <p>
-        We may use analytics to see how the site is used, and a Meta pixel to measure and improve our own advertising on
-        Instagram and Facebook. These tools can set cookies in your browser. You can block or delete cookies in your
-        browser settings.
+        We use Google Analytics to see how the site is used. We may also use a Meta pixel to measure and improve our own
+        advertising on Instagram and Facebook. These tools can set cookies in your browser. You can block or delete
+        cookies in your browser settings.
       </p>
 
       <h2>How long we keep it</h2>

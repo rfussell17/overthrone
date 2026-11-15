@@ -1,3 +1,4 @@
+import { Analytics } from '@/components/analytics'
 import { Main } from '@/components/elements/main'
 import { SiteFooter } from '@/components/site-footer'
 import { SiteNavbar } from '@/components/site-navbar'
@@ -39,6 +40,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <SiteNavbar />
         <Main id="main">{children}</Main>
         <SiteFooter />
+        <Analytics />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }} />
       </body>
     </html>
