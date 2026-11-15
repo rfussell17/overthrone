@@ -1,0 +1,25 @@
+<!doctype html>
+<!--
+  Netlify Forms needs a plain HTML copy of the form to detect it at deploy time (Next.js pages are not scanned).
+  The real form is src/components/contact-form.tsx and posts to this file. Keep the field names identical.
+-->
+<html lang="en">
+  <head><meta charset="utf-8" /><meta name="robots" content="noindex" /><title>Forms</title></head>
+  <body>
+    <form name="inquiry" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="hidden" name="form-name" value="inquiry" />
+      <input name="bot-field" />
+      <input name="name" />
+      <input name="email" type="email" />
+      <input name="artist" />
+      <input name="spotify" />
+      <input type="checkbox" name="services" value="Ad campaign (Meta or Google)" />
+      <input type="checkbox" name="services" value="Organic content strategy" />
+      <input type="checkbox" name="services" value="Social media management" />
+      <input type="checkbox" name="services" value="Marketing coaching or a social audit" />
+      <input type="checkbox" name="services" value="Not sure yet" />
+      <select name="budget"><option>Under $500</option><option>$500 to $1,000</option><option>$1,000 to $2,500</option><option>$2,500 or more</option><option>Not sure yet</option></select>
+      <textarea name="message"></textarea>
+    </form>
+  </body>
+</html>

@@ -1,0 +1,197 @@
+@import 'tailwindcss';
+
+/*
+ * `sand:` styles apply inside a light Sand panel (add the class `sand-panel` to the section).
+ * The site is dark by default: Black background, Sand text, Torchlight accents.
+ */
+@custom-variant sand (&:where(.sand-panel, .sand-panel *));
+
+@theme {
+  /* Fonts are loaded with next/font in src/app/fonts.ts and exposed as CSS variables on <html>. */
+  --font-display: var(--font-know), 'Arial Black', sans-serif;
+  --font-sans: var(--font-just-sans), system-ui, sans-serif;
+  --font-mono: var(--font-just-sans), system-ui, sans-serif; /* labels and eyebrows use JUST Sans, not a mono face */
+  --font-accent: var(--font-badger), cursive;
+
+  /* Overthrone brand colours — 2026 Brand Overview */
+  --color-black: #141515;
+  --color-torchlight: #ff4c39;
+  --color-white: #ffffff;
+  --color-stone: #4c4645;
+  --color-sand: #f5e8dc;
+
+  /* Semantic aliases used by the section components */
+  /* Careful: `text-base/7` now means the colour `base` at 7% opacity, not a font size. Write `text-[1rem]/7` for size. */
+  --color-base: #141515; /* page background */
+  --color-ink: #f5e8dc; /* default text on the page background */
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: var(--color-base);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-weight: 300;
+    font-synthesis: none; /* Know and Badger have one weight each; never fake a bold */
+    --scroll-padding-top: 5rem;
+    scroll-padding-top: var(--scroll-padding-top);
+  }
+
+  ::selection {
+    background-color: var(--color-torchlight);
+    color: var(--color-black);
+  }
+}
+
+@layer components {
+  /* Know is a capitals face */
+  .font-display {
+    text-transform: uppercase;
+    font-weight: 400;
+    letter-spacing: 0;
+  }
+
+  /* Brand overview shows Know at 95% and 75% width. The font has no width axis, so scale it. */
+  .know-95 {
+    display: inline-block;
+    transform: scaleX(0.95);
+    transform-origin: left;
+  }
+  .know-75 {
+    display: inline-block;
+    transform: scaleX(0.75);
+    transform-origin: left;
+  }
+
+  .testimonial-quote > *:first-child::before {
+    position: absolute;
+    display: inline;
+    translate: -100%;
+    content: '\201C';
+  }
+  .testimonial-quote > *:last-child::after {
+    display: inline;
+    content: '\201D';
+  }
+
+  /* Blog article typography and callouts */
+  .article-measure {
+    margin-inline: auto;
+    max-width: 42rem;
+  }
+  .article-prose {
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: 1.0625rem;
+    line-height: 1.75;
+  }
+  .article-prose > * + * {
+    margin-top: 1.25rem;
+  }
+  .article-prose h2 {
+    margin-top: 3.5rem;
+    font-family: var(--font-sans);
+    font-weight: 800;
+    font-size: 1.875rem;
+    line-height: 1.2;
+    color: var(--color-white);
+    scroll-margin-top: 6rem;
+  }
+  .article-prose h3 {
+    margin-top: 2rem;
+    font-family: var(--font-sans);
+    font-weight: 800;
+    font-size: 1.25rem;
+    color: var(--color-white);
+  }
+  .article-prose ul {
+    list-style: disc;
+    padding-left: 1.25rem;
+  }
+  .article-prose ol {
+    list-style: decimal;
+    padding-left: 1.25rem;
+  }
+  .article-prose li + li {
+    margin-top: 0.5rem;
+  }
+  .article-prose a {
+    color: var(--color-torchlight);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .article-prose strong {
+    font-weight: 800;
+  }
+
+  .tldr-callout {
+    border-radius: 1rem;
+    background: color-mix(in srgb, var(--color-stone) 45%, var(--color-base));
+    padding: 2rem 1.75rem;
+  }
+  .tldr-label {
+    font-family: var(--font-sans);
+    font-size: 0.6875rem;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-torchlight);
+  }
+  .tldr-summary {
+    margin-top: 0.75rem;
+    font-family: var(--font-sans);
+    font-weight: 800;
+    font-size: 1.1875rem;
+    line-height: 1.55;
+    color: var(--color-white);
+  }
+  .tldr-callout ul {
+    margin-top: 1rem;
+    list-style: disc;
+    padding-left: 1.25rem;
+  }
+  .tldr-callout li + li {
+    margin-top: 0.5rem;
+  }
+
+  /* Torchlight panel: Black text, never White body copy (White on Torchlight is 3.31:1) */
+  .article-cta {
+    border-radius: 1.5rem;
+    background: var(--color-torchlight);
+    color: var(--color-black);
+    padding: 2.5rem 2rem;
+    text-align: center;
+  }
+  .cta-label {
+    font-family: var(--font-sans);
+    font-size: 0.6875rem;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+  .cta-title {
+    margin-top: 0.75rem;
+    font-family: var(--font-sans);
+    font-weight: 800;
+    font-size: 1.75rem;
+    line-height: 1.2;
+  }
+  .cta-sub {
+    margin: 0.75rem auto 0;
+    max-width: 32rem;
+  }
+  .cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+    border-radius: 9999px;
+    background: var(--color-black);
+    padding: 0.75rem 1.5rem;
+    font-family: var(--font-sans);
+    font-weight: 800;
+    color: var(--color-white);
+  }
+}
