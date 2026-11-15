@@ -22,6 +22,7 @@ export const nav = [
   { label: 'Digital Marketing', href: '/digital-marketing' },
   { label: 'Social Media', href: '/social-media' },
   { label: 'Case Studies', href: '/case-studies' },
+  { label: 'Blog', href: '/blog' },
   { label: 'About', href: '/about' },
 ]
 

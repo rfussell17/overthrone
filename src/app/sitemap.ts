@@ -8,6 +8,9 @@ const pages: { path: string; priority: number }[] = [
   { path: '/digital-marketing/meta-ads', priority: 0.9 },
   { path: '/social-media', priority: 0.9 },
   { path: '/about', priority: 0.7 },
+  { path: '/blog', priority: 0.6 },
+  { path: '/blog/meta-ads-for-metal-bands', priority: 0.6 }, // add each new post here
+
   { path: '/contact', priority: 0.8 },
   { path: '/privacy', priority: 0.2 },
   // '/case-studies' and each case study: add once real case studies exist

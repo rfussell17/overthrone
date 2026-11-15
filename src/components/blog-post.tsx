@@ -24,8 +24,8 @@ export function BlogPost({
   tldrPoints,
   ctaTitle,
   ctaSub,
-  ctaHref = '/inquire',
-  ctaLabel = 'Inquire',
+  ctaHref = '/contact',
+  ctaLabel = 'Tell us about your band',
   keepReading,
   faqHeadingId = 'faq',
   children,
@@ -68,14 +68,14 @@ export function BlogPost({
 
         <header className="article-measure mt-10">
           <span
-            className={`inline-block rounded-sm px-3 py-1.5 font-mono text-[11px] font-normal tracking-widest uppercase ${theme?.pill ?? 'bg-stone text-ink'}`}
+            className={`inline-block rounded-full px-3 py-1.5 font-sans text-[11px] font-extrabold tracking-widest uppercase ${theme?.pill ?? 'bg-stone text-ink'}`}
           >
             {post.category}
           </span>
-          <h1 className="mt-6 font-display text-4xl leading-[1.1] font-semibold tracking-tight text-balance text-ink sm:text-5xl lg:text-6xl">
+          <h1 className="mt-6 font-sans text-4xl leading-[1.1] font-extrabold text-balance text-white sm:text-5xl">
             {post.title}
           </h1>
-          <p className="mt-6 font-sans text-xl leading-relaxed text-pretty text-ink/80 italic">{subtitle}</p>
+          <p className="mt-6 font-sans text-xl leading-relaxed text-pretty text-ink/80">{subtitle}</p>
           <div className="mt-8 flex items-center gap-4 border-t border-ink/10 pt-6">
             <div>
               <div className="font-sans text-sm font-medium text-ink">Overthrone</div>
@@ -111,7 +111,7 @@ export function BlogPost({
         </div>
 
         <aside className="article-measure article-cta mt-20">
-          <div className="cta-label">Plan your visit</div>
+          <div className="cta-label">Work with us</div>
           <h3 className="cta-title">{ctaTitle}</h3>
           {ctaSub && <p className="cta-sub">{ctaSub}</p>}
           <a className="cta-btn" href={ctaHref}>

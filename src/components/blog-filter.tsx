@@ -1,6 +1,5 @@
 'use client'
 
-import { CardTitle } from '@/components/elements/card-title'
 import { clsx } from 'clsx/lite'
 import Link from 'next/link'
 import { useMemo, useState } from 'react'
@@ -26,7 +25,7 @@ export function BlogFilter({ posts }: { posts: Post[] }) {
             type="button"
             onClick={() => setActive(category)}
             className={clsx(
-              'rounded-sm px-3 py-1.5 font-mono text-xs font-normal tracking-widest uppercase transition',
+              'rounded-full px-3 py-1.5 font-sans text-xs font-extrabold tracking-widest uppercase transition',
               active === category
                 ? (categoryTheme[category as Category]?.pill ?? 'bg-ink text-base')
                 : 'bg-stone/30 text-ink/70 hover:bg-stone/50',
@@ -42,17 +41,17 @@ export function BlogFilter({ posts }: { posts: Post[] }) {
           <Link
             key={post.slug}
             href={`/blog/${post.slug}`}
-            className="flex flex-col gap-4 rounded-2xl border border-ink/10 p-6 transition hover:border-ink/30"
+            className="flex flex-col gap-4 rounded-md border border-stone/60 p-6 transition hover:border-torchlight"
           >
             <span
               className={clsx(
-                'inline-block w-fit rounded-sm px-2.5 py-1 font-mono text-[10px] tracking-widest uppercase',
+                'inline-block w-fit rounded-full px-2.5 py-1 font-sans text-[10px] font-extrabold tracking-widest uppercase',
                 categoryTheme[post.category as Category]?.pill ?? 'bg-stone text-ink',
               )}
             >
               {post.category}
             </span>
-            <CardTitle>{post.title}</CardTitle>
+            <h2 className="text-2xl/8 font-extrabold text-balance text-white">{post.title}</h2>
             <p className="text-sm/6 text-ink/70">{post.description}</p>
             <time dateTime={post.date} className="font-mono text-xs text-ink/50">
               {formatDate(post.date)}
