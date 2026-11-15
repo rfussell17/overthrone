@@ -14,8 +14,11 @@ Open http://localhost:3000. The internal style guide is at /styleguide.
 
 ## Where things live
 
-- `src/app/` — pages: `page.tsx` (scaffold homepage), `contact/` (inquiry form), `podcast/` (holding page),
+- `src/app/` — pages: `page.tsx` (homepage), `digital-marketing/`, `digital-marketing/meta-ads/`, `social-media/`,
+  `about/`, `case-studies/` (index and one page per artist), `contact/`, `privacy/`, `podcast/` (holding page),
   `styleguide/` (build reference, hidden from search).
+- `src/data/service-pages.ts` + `src/components/service-page.tsx` — content and shared layout for the service pages.
+  Edit the data file to change wording; all of it is DRAFT until Overthrone approves it.
 - `src/app/globals.css` — brand colours and font tokens.
 - `src/app/fonts.ts` — font loading (Know, JUST Sans, Badger) from `src/fonts/`.
 - `src/components/brand/` — logos (`logo.tsx`), stacked headline, pill labels, chevrons.

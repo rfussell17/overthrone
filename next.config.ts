@@ -2,11 +2,10 @@ import type { NextConfig } from 'next'
 
 /**
  * Redirects from the old Squarespace site (www.overthrone.ca) so no existing links break.
- * /podcast keeps its path on the new site, so it needs no redirect. /about is a TODO until that page exists.
+ * /podcast and /about keep their paths on the new site, so they need no redirect.
  */
 const legacyRedirects: { source: string; destination: string }[] = [
   { source: '/cart', destination: '/' }, // no shop at launch; a shop.overthrone.ca subdomain may come later
-  // { source: '/about', destination: '/about' }, // keep the same path when the about page is built
 ]
 
 const nextConfig: NextConfig = {

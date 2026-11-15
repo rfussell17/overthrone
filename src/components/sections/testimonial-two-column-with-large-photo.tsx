@@ -24,7 +24,7 @@ export function TestimonialTwoColumnWithLargePhoto({
               {quote}
             </blockquote>
             <figcaption className="text-sm/7">
-              <p className="font-semibold text-[1rem]/7">{name}</p>
+              <p className="text-[1rem]/7 font-semibold">{name}</p>
               <p className="text-ink/70">{byline}</p>
             </figcaption>
           </div>

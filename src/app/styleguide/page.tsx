@@ -107,12 +107,7 @@ export default function Page() {
               />
             </div>
             <div className="rounded-md bg-torchlight p-8">
-              <StackedHeadline
-                lines={['Punchy', 'Headline', 'Quote']}
-                accent={1}
-                color="black"
-                size="md"
-              />
+              <StackedHeadline lines={['Punchy', 'Headline', 'Quote']} accent={1} color="black" size="md" />
             </div>
           </div>
         </Block>

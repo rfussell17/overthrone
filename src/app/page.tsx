@@ -1,15 +1,17 @@
+import { ArrowLink } from '@/components/arrow-link'
 import { Chevrons, PillLabel } from '@/components/brand/graphics'
 import { StackedHeadline } from '@/components/brand/stacked-headline'
+import { CaseStudyGrid } from '@/components/case-study-grid'
+import { CtaBand } from '@/components/cta-band'
 import { ButtonLink, PlainButtonLink } from '@/components/elements/button'
 import { Container } from '@/components/elements/container'
-import { Photo, Placeholder } from '@/components/elements/placeholder'
+import { Photo } from '@/components/elements/placeholder'
 import { Subheading } from '@/components/elements/subheading'
 import { Text } from '@/components/elements/text'
-import { caseStudies, caseStudyFootnote } from '@/data/case-studies'
+import { TeamGrid } from '@/components/team-grid'
 import { clients } from '@/data/clients'
 import { pillars } from '@/data/services'
 import { site } from '@/data/site'
-import { team } from '@/data/team'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -78,7 +80,11 @@ function WhatWeDo() {
         <div className="grid gap-6 lg:grid-cols-2">
           {pillars.map((pillar) => (
             <article key={pillar.name} className="flex flex-col gap-5 rounded-md border border-stone/60 p-7">
-              <h3 className="font-display text-lg/6 text-torchlight">{pillar.name}</h3>
+              <h3 className="font-display text-lg/6 text-torchlight">
+                <Link href={pillar.href} className="underline-offset-4 hover:underline">
+                  {pillar.name}
+                </Link>
+              </h3>
               <p className="font-extrabold text-white">{pillar.summary}</p>
               <ul className="flex flex-col gap-2 text-sm/6 text-ink">
                 {pillar.services.map((service) => (
@@ -88,6 +94,9 @@ function WhatWeDo() {
                   </li>
                 ))}
               </ul>
+              <ArrowLink href={pillar.href} className="mt-auto pt-2">
+                {pillar.linkLabel}
+              </ArrowLink>
             </article>
           ))}
         </div>
@@ -104,79 +113,8 @@ function Results() {
           <PillLabel>Results</PillLabel>
           <Subheading>Growth you can count</Subheading>
         </div>
-        {caseStudies.length === 0 ? (
-          /* Placeholder cards until the new case studies arrive. Fill src/data/case-studies.ts and these disappear. */
-          <div className="grid gap-6 md:grid-cols-2">
-            {[1, 2, 3, 4].map((n) => (
-              <article key={n} className="grid overflow-hidden rounded-md border border-stone/60 sm:grid-cols-5">
-                <Placeholder label="Artist photo" ratio="none" className="min-h-56 rounded-none sm:col-span-2" />
-                <div className="flex flex-col gap-4 p-6 sm:col-span-3">
-                  <div>
-                    <p className="text-xs/5 font-extrabold tracking-widest text-torchlight uppercase">
-                      Digital Marketing | Case Study
-                    </p>
-                    <h3 className="mt-2 font-display text-xl/6 text-white">Case study {n}</h3>
-                    <p className="mt-1 text-sm/6 text-ink/80">Genre · Campaign period</p>
-                  </div>
-                  <dl className="flex flex-col gap-2">
-                    {['Streaming growth', 'Listener growth', 'Follower growth'].map((label) => (
-                      <div
-                        key={label}
-                        className="flex items-baseline justify-between gap-4 border-t border-stone/50 pt-2"
-                      >
-                        <dt className="text-sm/6 text-torchlight">{label}</dt>
-                        <dd className="text-lg/6 font-extrabold text-ink/40">To come</dd>
-                      </div>
-                    ))}
-                  </dl>
-                </div>
-              </article>
-            ))}
-          </div>
-        ) : (
-          <>
-            <div className="grid gap-6 md:grid-cols-2">
-              {caseStudies.map((study) => (
-                <article
-                  key={study.artist}
-                  className="grid overflow-hidden rounded-md border border-stone/60 sm:grid-cols-5"
-                >
-                  <Photo
-                    src={study.photo}
-                    alt={`${study.artist} press photo`}
-                    label={`${study.artist} photo`}
-                    ratio="none"
-                    sizes="(min-width: 768px) 20vw, 100vw"
-                    className="min-h-56 rounded-none sm:col-span-2"
-                  />
-                  <div className="flex flex-col gap-4 p-6 sm:col-span-3">
-                    <div>
-                      <p className="text-xs/5 font-extrabold tracking-widest text-torchlight uppercase">
-                        Digital Marketing | Case Study
-                      </p>
-                      <h3 className="mt-2 font-display text-xl/6 text-white">{study.artist}</h3>
-                      <p className="mt-1 text-sm/6 text-ink/80">
-                        {study.genre} · {study.period}
-                      </p>
-                    </div>
-                    <dl className="flex flex-col gap-2">
-                      {study.stats.map((stat) => (
-                        <div
-                          key={stat.label}
-                          className="flex items-baseline justify-between gap-4 border-t border-stone/50 pt-2"
-                        >
-                          <dt className="text-sm/6 text-torchlight">{stat.label}</dt>
-                          <dd className="text-lg/6 font-extrabold text-white">{stat.value}</dd>
-                        </div>
-                      ))}
-                    </dl>
-                  </div>
-                </article>
-              ))}
-            </div>
-            <p className="text-xs/5 text-ink/70">{caseStudyFootnote}</p>
-          </>
-        )}
+        <CaseStudyGrid />
+        <ArrowLink href="/case-studies">All case studies</ArrowLink>
       </Container>
     </section>
   )
@@ -199,26 +137,8 @@ function WhoWeAre() {
             </p>
           </Text>
         </div>
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
-          {team.map((person) => (
-            <article key={person.name} className="flex flex-col gap-5">
-              <Photo
-                src={person.photo}
-                alt={`Portrait of ${person.name}`}
-                label="Portrait"
-                ratio="portrait"
-                shape="capsule"
-                sizes="160px"
-                className="w-32"
-              />
-              <div>
-                <h3 className="text-2xl/8 font-extrabold text-torchlight">{person.name}</h3>
-                <p className="text-ink">{person.title}</p>
-              </div>
-              {person.bio && <p className="text-sm/6 text-ink/90">{person.bio}</p>}
-            </article>
-          ))}
-        </div>
+        <TeamGrid />
+        <ArrowLink href="/about">More about us</ArrowLink>
       </Container>
     </section>
   )
@@ -268,23 +188,6 @@ function Clients() {
   )
 }
 
-function CallToAction() {
-  return (
-    <section id="contact" className="bg-torchlight py-20 text-black sm:py-24">
-      <Container className="flex flex-col items-start gap-8">
-        <StackedHeadline lines={['Ready', 'to take', 'the next', 'step?']} color="black" />
-        <p className="max-w-xl text-lg/8 font-normal">Let us know how we can help you.</p>
-        <Link
-          href="/contact"
-          className="inline-flex min-h-11 items-center rounded-full bg-black px-6 py-2.5 text-sm/7 font-extrabold tracking-wide text-white hover:bg-stone"
-        >
-          Tell us about your band
-        </Link>
-      </Container>
-    </section>
-  )
-}
-
 export default function Page() {
   return (
     <>
@@ -294,7 +197,7 @@ export default function Page() {
       <Results />
       <WhoWeAre />
       <Clients />
-      <CallToAction />
+      <CtaBand />
     </>
   )
 }

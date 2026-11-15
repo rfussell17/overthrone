@@ -19,11 +19,17 @@ export const site = {
 }
 
 export const nav = [
-  { label: 'What we do', href: '/#what-we-do' },
-  { label: 'Results', href: '/#results' },
-  { label: 'Who we are', href: '/#who-we-are' },
-  { label: 'Clients', href: '/#clients' },
+  { label: 'Digital Marketing', href: '/digital-marketing' },
+  { label: 'Social Media', href: '/social-media' },
+  { label: 'Case Studies', href: '/case-studies' },
+  { label: 'About', href: '/about' },
 ]
 
 // Shown in the footer only
-export const footerNav = [...nav, { label: 'Podcast', href: '/podcast' }, { label: 'Contact', href: '/contact' }]
+export const footerNav = [
+  ...nav,
+  { label: 'Meta Ads', href: '/digital-marketing/meta-ads' },
+  { label: 'Podcast', href: '/podcast' },
+  { label: 'Contact', href: '/contact' },
+  { label: 'Privacy', href: '/privacy' },
+]

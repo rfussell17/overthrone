@@ -3,6 +3,8 @@
 export const pillars = [
   {
     name: 'Digital Marketing',
+    href: '/digital-marketing',
+    linkLabel: 'Digital marketing for bands',
     summary: 'Ad campaigns and strategy built around growth you can measure.',
     services: [
       'Meta Ads for followers, listeners, mailing list sign-ups and ticket sales',
@@ -14,6 +16,8 @@ export const pillars = [
   },
   {
     name: 'Social Media',
+    href: '/social-media',
+    linkLabel: 'Social media for bands',
     summary: 'Content and community that give new listeners a reason to stay.',
     services: ['Trial Reels campaigns', 'Community management', 'Content creation, including on-site shoots'],
   },
